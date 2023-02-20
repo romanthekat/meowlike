@@ -1,6 +1,8 @@
-package core
+package component
 
-import "github.com/romanthekat/meowlike/pkg/physics"
+import (
+	"github.com/romanthekat/meowlike/pkg/system/physics"
+)
 
 type Coor struct {
 	X, Y int

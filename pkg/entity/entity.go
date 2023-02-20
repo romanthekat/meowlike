@@ -1,6 +1,9 @@
-package core
+package entity
 
-import "github.com/romanthekat/meowlike/pkg/physics"
+import (
+	"github.com/romanthekat/meowlike/pkg/component"
+	"github.com/romanthekat/meowlike/pkg/system/physics"
+)
 
 type Game struct {
 	Map [][]*Cell
@@ -13,14 +16,14 @@ type Game struct {
 
 type Entity struct {
 	Id  string
-	Obj PhysicalObject
+	Obj component.PhysicalObject
 
 	Rules []*Rule
 }
 
 type Creature struct {
 	E          Entity
-	Controller Controller
+	Controller component.Controller
 
 	Str float64
 	Int float64
