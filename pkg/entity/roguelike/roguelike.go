@@ -1,22 +1,12 @@
-package entity
+package roguelike
 
 import (
 	"github.com/romanthekat/meowlike/pkg/component"
 	"github.com/romanthekat/meowlike/pkg/system/physics"
 )
 
-type Game struct {
-	Map [][]*Cell
-
-	//coefficients
-
-	GlobalRules []Rule
-	Rules       []Rule
-}
-
 type Entity struct {
-	Id  string
-	Obj component.PhysicalObject
+	Id string
 
 	Rules []*Rule
 }
@@ -24,6 +14,10 @@ type Entity struct {
 type Creature struct {
 	E          Entity
 	Controller component.Controller
+
+	Coor     component.Coor
+	Physical component.Physical
+	Kinetic  component.Kinetic
 
 	Str float64
 	Int float64
@@ -39,14 +33,8 @@ type Creature struct {
 type Item struct {
 	E Entity
 	//usage type
-}
 
-type Rule struct {
-	IsGlobal bool
-	//Condition
-	//Action
-}
-
-type Cell struct {
-	Creature *Creature
+	Coor     component.Coor
+	Physical component.Physical
+	Kinetic  component.Kinetic
 }

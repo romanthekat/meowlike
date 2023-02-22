@@ -44,14 +44,11 @@ type Material struct {
 	Tags map[string]string
 }
 
-type PhysicalObject struct {
+type Physical struct {
 	Integrity Integrity
 
 	Material Material
 	Mass     physics.Mass
-
-	Coor Coor
-	K    Kinetic
 
 	Form Form
 	Temp physics.Temperature
