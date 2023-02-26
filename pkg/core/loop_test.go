@@ -4,11 +4,31 @@ import (
 	"testing"
 )
 
-func TestCircularList_Add(t *testing.T) {
-	list := NewList()
-	e1 := list.Add(&Value{})
-	e2 := list.Add(&Value{})
-	e3 := list.Add(&Value{})
+type MockSentient struct {
+}
+
+func (m MockSentient) AddEnergy(energy int) {
+	panic("implement me")
+}
+
+func (m MockSentient) SubEnergy(energy int) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (m MockSentient) GetEnergy() int {
+	panic("implement me")
+}
+
+func (m MockSentient) Act() int {
+	panic("implement me")
+}
+
+func TestLoop_Add(t *testing.T) {
+	list := NewLoop()
+	e1 := list.Add(&MockSentient{})
+	e2 := list.Add(&MockSentient{})
+	e3 := list.Add(&MockSentient{})
 	//root->e3->e2->e1->root
 
 	if e3 != list.Next() {
@@ -20,16 +40,16 @@ func TestCircularList_Add(t *testing.T) {
 	if e1 != list.Next() {
 		t.Fatalf("1: the loop is broken")
 	}
-	if e3 != list.Next() {
+	if nil != list.Next() {
 		t.Fatalf("3/loop again: the loop is broken")
 	}
 }
 
-func TestCircularList_Del(t *testing.T) {
-	list := NewList()
-	e1 := list.Add(&Value{})
-	e2 := list.Add(&Value{})
-	e3 := list.Add(&Value{})
+func TestLoop_Del(t *testing.T) {
+	list := NewLoop()
+	e1 := list.Add(&MockSentient{})
+	e2 := list.Add(&MockSentient{})
+	e3 := list.Add(&MockSentient{})
 	//root->e3->e2->e1->root
 
 	list.Del(e2)
@@ -43,7 +63,7 @@ func TestCircularList_Del(t *testing.T) {
 		t.Fatalf("1: the loop is broken")
 	}
 
-	if e3 != list.Next() {
+	if nil != list.Next() {
 		t.Fatalf("3/loop again: the loop is broken")
 	}
 }

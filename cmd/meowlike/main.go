@@ -22,5 +22,6 @@ func main() {
 	var boltSpeed = physics.GetMovementSpeed(crossbowEnergy, boltMass)
 	fmt.Println(boltSpeed)
 
-	system.MainLoop()
+	game := system.NewGame()
+	game.MainLoop()
 }

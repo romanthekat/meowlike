@@ -1,51 +1,55 @@
 package core
 
-type CircularList struct {
+type Loop struct {
 	root *Element
 	cur  *Element
 }
 
-func NewList() *CircularList {
+func NewLoop() *Loop {
 	root := &Element{}
 	root.next = root
 	root.prev = root
-	return &CircularList{root: root, cur: root}
+	return &Loop{root: root, cur: root}
 }
 
-func (c *CircularList) Add(v *Value) *Element {
+func (l *Loop) Add(s Sentient) *Element {
 	e := &Element{
-		V:    v,
-		next: c.root.next,
-		prev: c.root,
+		S:    s,
+		next: l.root.next,
+		prev: l.root,
 	}
 
-	c.root.next.prev = e
-	c.root.next = e
+	l.root.next.prev = e
+	l.root.next = e
 
 	return e
 }
 
-func (c *CircularList) Del(e *Element) {
+func (l *Loop) Del(e *Element) {
 	e.prev.next = e.next
 	e.next.prev = e.prev
 }
 
-func (c *CircularList) Next() *Element {
-	c.cur = c.cur.next
+func (l *Loop) Next() *Element {
+	l.cur = l.cur.next
 
-	if c.cur == c.root {
-		return c.Next()
+	if l.cur == l.root {
+		return nil
 	}
 
-	return c.cur
+	return l.cur
 }
 
 type Element struct {
-	V *Value
+	S Sentient
 
 	next *Element
 	prev *Element
 }
 
-type Value struct {
+type Sentient interface {
+	AddEnergy(energy int)
+	SubEnergy(energy int)
+	GetEnergy() int
+	Act() int
 }
