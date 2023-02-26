@@ -1,8 +1,8 @@
 package roguelike
 
 import (
+	"github.com/google/uuid"
 	"github.com/romanthekat/meowlike/pkg/component"
-	"github.com/romanthekat/meowlike/pkg/system/physics"
 )
 
 type Entity struct {
@@ -11,13 +11,19 @@ type Entity struct {
 	Rules []*Rule
 }
 
+func NewEntity() *Entity {
+	id := uuid.Must(uuid.NewRandom()).String()
+	return &Entity{Id: id}
+}
+
 type Creature struct {
-	E          Entity
+	E          *Entity
 	Controller component.Controller
 
-	Coor     component.Coor
-	Physical component.Physical
-	Kinetic  component.Kinetic
+	Coor    *component.Coor
+	Kinetic *component.Kinetic
+	//TODO body system
+	//Physical component.Physical
 
 	Str float64
 	Int float64
@@ -27,7 +33,8 @@ type Creature struct {
 
 	Items []*Item
 
-	MentalEnergy physics.Energy
+	PhysicalEnergy float64
+	MentalEnergy   float64
 }
 
 type Item struct {

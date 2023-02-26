@@ -5,7 +5,8 @@ import (
 )
 
 type Coor struct {
-	X, Y int
+	X, Y     int
+	Altitude int
 }
 
 type Kinetic struct {
