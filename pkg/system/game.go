@@ -10,3 +10,10 @@ type Game struct {
 	GlobalRules []*roguelike.Rule
 	Rules       []*roguelike.Rule
 }
+
+func MainLoop() {
+	done := false
+	for !done {
+
+	}
+}

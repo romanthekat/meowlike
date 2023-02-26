@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/romanthekat/meowlike/pkg/system"
 	"github.com/romanthekat/meowlike/pkg/system/physics"
 )
 
@@ -20,4 +21,6 @@ func main() {
 
 	var boltSpeed = physics.GetMovementSpeed(crossbowEnergy, boltMass)
 	fmt.Println(boltSpeed)
+
+	system.MainLoop()
 }
