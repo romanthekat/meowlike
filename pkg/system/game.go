@@ -37,6 +37,7 @@ func (g *Game) MainLoop() {
 
 			sentient.AddEnergy(TickLength)
 
+			//even if energy left after action, give chance to other to act
 			if sentient.GetEnergy() > 0 {
 				cost := sentient.Act()
 				sentient.SubEnergy(cost)
